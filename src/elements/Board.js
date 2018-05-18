@@ -9,8 +9,25 @@ import Square from './Square'
 
 class Board extends Component {
 	
+	constructor( props ) {
+		super( props )
+		this.state = { squares: Array( 9 ).fill( null ) }
+	}
+	
+	
+	handleClick( insert ) {
+		const squares = this.state.squares.slice( )
+		squares[ insert ] = 'X'
+		this.setState( { squares: squares } )
+	}
+	
 	renderSquare( value ) {
-		return <Square value={ value }/>
+		return (
+			<Square
+				value={ this.state.squares[ value ] }
+				onClick={ ( ) => this.handleClick( value ) }
+			/>
+		)
 	}
 	
 	render( ) {
@@ -41,5 +58,6 @@ class Board extends Component {
 
 
 export default Board
+
 
 
