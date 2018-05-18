@@ -2,24 +2,18 @@
 
 
 
-import React, { Component } from 'react'
+import React from 'react'
 
 
 
-class Square extends Component {
-	
-	render( ) {
-		return (
-			// Use the function passed by Board to modify the square's value
-			<button className="square" onClick={ ( ) => this.props.onClick( ) }>
-				{ this.props.value }
-			</button>
-		)
-	}
-	
+// Implement Square as a functional component as it only renders jsx
+export default function Square( props ) {
+	return (
+		// Use the function passed by Board to modify the square's value
+		<button className="square" onClick={ props.onClick }>
+			{ props.value }
+		</button>
+	)
 }
-
-
-export default Square
 
 

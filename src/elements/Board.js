@@ -19,7 +19,7 @@ class Board extends Component {
 	
 	// Handle state on square's parent component instead
 	handleClick( insert ) {
-		// Copy state's squares array for history preservation
+		// Copy state's squares array to track every update
 		const squares = this.state.squares.slice( )
 		// Insert X at the array index mapped to this square
 		squares[ insert ] = 'X'
