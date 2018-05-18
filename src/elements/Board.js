@@ -3,7 +3,7 @@
 
 
 import React, { Component } from 'react'
-import Square from './Square.js'
+import Square from './Square'
 
 
 

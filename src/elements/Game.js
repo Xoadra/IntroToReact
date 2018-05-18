@@ -3,7 +3,7 @@
 
 
 import React, { Component } from 'react'
-import Board from './Board.js'
+import Board from './Board'
 
 
 
