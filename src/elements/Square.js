@@ -10,6 +10,7 @@ class Square extends Component {
 	
 	render( ) {
 		return (
+			// Use the function passed by Board to modify the square's value
 			<button className="square" onClick={ ( ) => this.props.onClick( ) }>
 				{ this.props.value }
 			</button>
@@ -20,6 +21,5 @@ class Square extends Component {
 
 
 export default Square
-
 
 
