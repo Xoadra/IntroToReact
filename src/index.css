@@ -35,6 +35,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	font: 14px "Century Gothic", Futura, sans-serif;
+	margin-top: 40px;
 }
 
 .game-board {
@@ -45,7 +46,9 @@ body {
 
 .game-info {
 	position: absolute;
-	margin-left: 20px;
+	right: 0;
+	left: 0;
+	/* margin-left: 20px; */
 }
 
 ol, ul {
@@ -102,6 +105,5 @@ ol, ul {
 	from { transform: rotate( 0deg ); }
 	to { transform: rotate( 360deg ); }
 }
-
 
 
