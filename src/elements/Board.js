@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react'
 import Square from './Square'
+import calculateWinner from '../actions/winner'
 
 
 
@@ -22,6 +23,8 @@ class Board extends Component {
 	handleClick( insert ) {
 		// Copy state's squares array to track every update
 		const squares = this.state.squares.slice( )
+		// Exit early if someone won or if the square is filled
+		if ( calculateWinner( squares ) || squares[ insert ] ) { return }
 		// Insert current player's mark at this square's index
 		squares[ insert ] = this.state.xIsNext ? 'X' : 'O'
 		// Make changes to state's array using updated copy
@@ -41,8 +44,13 @@ class Board extends Component {
 	}
 	
 	render( ) {
+		// Verify if a player has met a winning condition yet
+		const winner = calculateWinner( this.state.squares )
+		// Display game status by seeing if anyone has won
+		let status
+		if ( winner ) { status = 'Winner: ' + winner }
 		// Flip the status text to whichever player's turn it is
-		const status = 'Next player: ' + ( this.state.xIsNext ? 'X' : 'O' )
+		else { status = 'Next player: ' + ( this.state.xIsNext ? 'X' : 'O' ) }
 		return (
 			// Assign parent state's array index to each square
 			<div>
