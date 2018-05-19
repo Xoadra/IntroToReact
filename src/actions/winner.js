@@ -23,11 +23,13 @@ export default function calculateWinner( squares ) {
 		const [ a, b, c ] = lines[ idx ]
 		// Check if squares' indices are a winning set
 		if ( squares[ a ] && squares[ a ] === squares[ b ] && squares[ a ] === squares[ c ] ) {
+			// Return the mark of the winning player
 			return squares[ a ]
 		}
 	}
 	// No player won yet, so go back to the game
 	return null
 }
+
 
 

@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react'
 import Square from './Square'
+import Reset from './Reset'
 import calculateWinner from '../actions/winner'
 
 
@@ -30,6 +31,20 @@ class Board extends Component {
 		// Make changes to state's array using updated copy
 		// Go to next player's turn since last player just went
 		this.setState( { squares: squares, xIsNext: !this.state.xIsNext } )
+	}
+	
+	handleReset( winner ) {
+		// Generate a new property to see this game's winner
+		let replica = Object.assign( {  }, this.state )
+		replica.winner = winner
+		// Keep a record of each game like with saving turns
+		const game = Object.assign( {  }, replica )
+		// Objects with nested objects require deep copying
+		// Just use json methods for deep copies of an object
+		/* const game = JSON.parse( JSON.stringify( replica ) ) */
+		console.log( game )
+		// Reset the game's state which starts a new game
+		this.setState( { squares: Array( 9 ).fill( null ), xIsNext: true } )
 	}
 	
 	renderSquare( value ) {
@@ -70,6 +85,7 @@ class Board extends Component {
 					{ this.renderSquare( 7 ) }
 					{ this.renderSquare( 8 ) }
 				</div>
+				<Reset onClick={ ( ) => this.handleReset( winner ) }/>
 			</div>
 		)
 	}
