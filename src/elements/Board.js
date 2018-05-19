@@ -13,7 +13,8 @@ class Board extends Component {
 		// Use props here by injecting inherited class props
 		super( props )
 		// Build an array for square values and fill with null
-		this.state = { squares: Array( 9 ).fill( null ) }
+		// Track if player x goes next to see which turn it is
+		this.state = { squares: Array( 9 ).fill( null ), xIsNext: true }
 	}
 	
 	
@@ -21,10 +22,11 @@ class Board extends Component {
 	handleClick( insert ) {
 		// Copy state's squares array to track every update
 		const squares = this.state.squares.slice( )
-		// Insert X at the array index mapped to this square
-		squares[ insert ] = 'X'
+		// Insert current player's mark at this square's index
+		squares[ insert ] = this.state.xIsNext ? 'X' : 'O'
 		// Make changes to state's array using updated copy
-		this.setState( { squares: squares } )
+		// Go to next player's turn since last player just went
+		this.setState( { squares: squares, xIsNext: !this.state.xIsNext } )
 	}
 	
 	renderSquare( value ) {
@@ -39,7 +41,8 @@ class Board extends Component {
 	}
 	
 	render( ) {
-		const status = 'Next player: X'
+		// Flip the status text to whichever player's turn it is
+		const status = 'Next player: ' + ( this.state.xIsNext ? 'X' : 'O' )
 		return (
 			// Assign parent state's array index to each square
 			<div>
@@ -67,5 +70,6 @@ class Board extends Component {
 
 
 export default Board
+
 
 
